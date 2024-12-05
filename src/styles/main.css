@@ -1,29 +1,54 @@
 html {
 	font-size: 62.5%;
+	height: 100%;
 }
 
 body {
+	height: 100%;
 	font-size: 1.6rem;
 }
 
-button {
-	margin: 0;
-	padding: 0;
-	border: none;
-	background-color: transparent;
+.container {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-header {
+.header {
+	width: 100%;
+	height: 80px;
+	padding: 0 20px;
 	display: flex;
 	align-items: center;
-	padding: 20px;
 }
 
-nav {
+.nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 20px;
 
 	margin-left: auto;
+}
+
+.tab {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	transition: all 200ms ease-in-out;
+}
+
+.tab.active,
+.tab:hover {
+	text-decoration: underline;
+}
+
+.footer {
+	margin-top: auto;
+	margin-bottom: 10px;
 }
