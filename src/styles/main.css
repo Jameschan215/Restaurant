@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+@font-face {
+	font-family: 'Norse';
+	src: url(../fonts/Norse-Bold.otf) format('opentype');
+}
+
+:root {
+	--white: #fafaf9;
+	--black: #0c0a09;
+	--main-bg: rgba(41, 37, 36, 0.68);
+	--shadow: 0 5px 15px 0 rgba(255, 255, 255, 0.5);
+}
+
 html {
 	font-size: 62.5%;
 	height: 100%;
@@ -6,23 +20,65 @@ html {
 body {
 	height: 100%;
 	font-size: 1.6rem;
+	color: var(--white);
+
+	font-family: 'Oswald', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
+
+h1 {
+	font-size: 5.4rem;
+	font-weight: 900;
 }
 
 .container {
 	width: 100%;
 	height: 100%;
+	overflow: auto;
+	scrollbar-width: none; /* For Firefox */
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	justify-content: start;
+}
+
+.container::-webkit-scrollbar {
+	display: none; /* For Chrome, Safari, and Edge */
 }
 
 .header {
+	position: fixed;
 	width: 100%;
 	height: 80px;
 	padding: 0 20px;
 	display: flex;
 	align-items: center;
+	background-color: rgb(41, 37, 36);
+
+	border-bottom: 1px solid #1c1917;
+	z-index: 1;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+
+	div {
+		width: 40px;
+		height: auto;
+	}
+
+	span {
+		font-family: 'Norse';
+		font-size: 2.8rem;
+		margin-top: 2px;
+	}
 }
 
 .nav {
@@ -37,18 +93,57 @@ body {
 .tab {
 	margin: 0;
 	padding: 0;
+	color: inherit;
+	font-size: 2rem;
+	font-weight: 400;
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
-	transition: all 200ms ease-in-out;
+	border-bottom: 2px solid transparent;
 }
 
-.tab.active,
-.tab:hover {
-	text-decoration: underline;
+.tab.active {
+	border-bottom: 2px solid var(--white);
+	animation: underline 100ms forwards ease-in-out;
 }
 
-.footer {
-	margin-top: auto;
-	margin-bottom: 10px;
+.content {
+	width: 100%;
+	margin-top: 80px;
+	padding: 40px;
+	flex-grow: 1;
+
+	background-image: url('../images/bg.jpg');
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+@keyframes underline {
+	from {
+		border-color: transparent;
+	}
+	to {
+		border-color: var(--white);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.logo {
+		div {
+			width: 30px;
+		}
+
+		span {
+			font-size: 2rem;
+		}
+	}
+
+	.tab {
+		font-size: 1.8rem;
+	}
+
+	h1 {
+		font-size: 3.6rem;
+	}
 }

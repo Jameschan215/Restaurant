@@ -3,7 +3,6 @@ import '../styles/main.css';
 import { home } from './home';
 import { menu } from './menu';
 import { contact } from './contact';
-import { about } from './about';
 
 const tabs = [
 	{
@@ -18,17 +17,29 @@ const tabs = [
 		tabId: 3,
 		tabName: 'Contact',
 	},
-	{
-		tabId: 4,
-		tabName: 'About',
-	},
 ];
 
 const navDom = document.querySelector('header nav');
 const contentDom = document.querySelector('#content');
 let currentTabId = 1;
 
-function updatePage() {
+function getPageContent(tabId) {
+	switch (tabId) {
+		case 1:
+			contentDom.innerHTML = home();
+			break;
+		case 2:
+			contentDom.innerHTML = menu();
+			break;
+		case 3:
+			contentDom.innerHTML = contact();
+			break;
+		default:
+			break;
+	}
+}
+
+(function updatePage() {
 	navDom.innerHTML = tabs
 		.map(
 			(tab) =>
@@ -50,25 +61,4 @@ function updatePage() {
 			}
 		});
 	});
-}
-
-function getPageContent(tabId) {
-	switch (tabId) {
-		case 1:
-			contentDom.innerHTML = home();
-			break;
-		case 2:
-			contentDom.innerHTML = menu();
-			break;
-		case 3:
-			contentDom.innerHTML = contact();
-			break;
-		case 4:
-			contentDom.innerHTML = about();
-			break;
-		default:
-			break;
-	}
-}
-
-updatePage();
+})();
